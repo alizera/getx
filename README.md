@@ -109,7 +109,7 @@ void main() => runApp(GetMaterialApp(home: Home()));
 ```dart
 class Controller extends GetxController{
   var count = 0.obs;
-  increment() => count++;
+  increment() => count.value++;
 }
 ```
 
@@ -125,7 +125,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(context) => Scaffold(
       // Use Obx(()=> to update Text() whenever count is changed.
-      appBar: AppBar(title: Obx(() => Text("Clicks: ${c.count}"))),
+      appBar: AppBar(title: Obx(() => Text("Clicks: ${c.count.value}"))),
 
       // Replace the 8 lines Navigator.push by a simple Get.to(). You don't need context
       body: Center(child: RaisedButton(
@@ -141,7 +141,7 @@ class Other extends StatelessWidget {
   @override
   Widget build(context){
      // Access the updated count variable
-     return Scaffold(body: Center(child: Text("${c.count}")));
+     return Scaffold(body: Center(child: Text("${c.count.value}")));
   }
 }
 ```
